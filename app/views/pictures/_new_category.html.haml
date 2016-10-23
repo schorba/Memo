@@ -1,0 +1,11 @@
+#exampleModal.modal.fade{"aria-labelledby" => "exampleModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog{role: "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", type: "button"}
+          %span{"aria-hidden" => "true"} ×
+        %h4#exampleModalLabel.modal-title New Category
+      .modal-body
+        = simple_form_for :category, url: categories_path, html: {multipart: true} do |f|
+          = f.input :title, required: true, autofocus: true
+          = f.submit "Create Category", class: "button btn btn-primary"

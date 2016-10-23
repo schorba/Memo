@@ -1,0 +1,6 @@
+.image{id: "part#{part.id}"}
+  = link_to open_picture_game_path(game.id, part_id: part.id), method: :put , remote: true do
+    .to_center
+      = image_tag part.game.image.url(:thumb)
+
+

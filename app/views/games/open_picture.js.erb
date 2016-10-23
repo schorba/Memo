@@ -1,0 +1,13 @@
+$('#part<%= params[:part_id] %>').html('<%= j render(partial: 'picture', locals: {part: @part}) %>');
+
+<%  if !@open_first_part  && !@open_second_part %>
+
+setTimeout(function() {
+  $('#part<%= @opened_part.id %>').html('<%= j render(partial: 'cover_picture', locals: {part: @opened_part, game: @game}) %>');
+  $('#part<%= params[:part_id] %>').html('<%= j render(partial: 'cover_picture', locals: {part: @part, game: @game}) %>');
+}, 1000);
+
+<% end %>
+
+
+

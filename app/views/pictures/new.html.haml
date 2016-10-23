@@ -1,0 +1,15 @@
+.container_image.container
+  = simple_form_for @picture, url: pictures_path, html: {multipart: true} do |f|
+
+    = f.input :image
+    = f.label :Category, required: true
+    %br
+    = f.select :category_ids, options_for_select(Category.all.map { |c| [c.title, c.id] }), {}, {multiple: true}
+    %button.btn.btn-primary.btn-xs{"data-target" => "#exampleModal", "data-toggle" => "modal", type:"button"} Add New Category
+    %br
+    %br
+    = f.input :title
+    = f.input :description
+    = f.submit "Add Image", class: "button btn btn-primary btn-lg", id: 'create_button'
+
+  = render 'new_category'

@@ -1,0 +1,20 @@
+.container
+  .container_image
+    .game_container
+      %h4 Play Game
+      .game-name= @game.title
+      %br
+        %table{:border => 0}
+          - @parts.each  do |row|
+            %tr
+              - row.shuffle.each do |part|
+                .row
+                  .col-xs-6.col-md-3
+                    %td.row_td
+                      .thumbnail.image
+                        .image{id: "part#{part.id}"}
+                          = link_to open_picture_game_path(@game.id, part_id: part.id), method: :put , remote: true do
+                            = image_tag part.game.image.url(:thumb)
+
+        %br
+          = button_to "Play Again", play_game_path(@game), method: :put, class: "button btn btn-primary btn-default"

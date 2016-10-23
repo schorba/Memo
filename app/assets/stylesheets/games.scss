@@ -1,0 +1,41 @@
+.container{
+  width: 1000px;
+  margin: 0 auto;
+}
+
+#create_button {
+  position: relative;
+  width: 100%;
+}
+
+.game_container{
+  position: relative;
+  left: 200px;
+}
+
+.row_td{
+  padding: 5px;
+}
+
+.image_cell{
+  padding: 5px;
+}
+
+.to_center {
+  text-align: center;
+}
+
+.game-title{
+  font-family: Verdana;
+  font-weight: 500;
+}
+
+.game-name{
+  font-family: Verdana;
+  font-weight: 500;
+  color: #666666;
+  font-size: large;
+}
+.game-description{
+  color: #666666;
+}

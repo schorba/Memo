@@ -1,0 +1,16 @@
+.container_image
+  .game_container
+    .game-name= @game.title
+    .game-description= @game.description
+
+    %table
+      - @game.pictures.each_slice(4) do |row|
+        %tr
+          - row.each do |part|
+            .row
+              .col-xs-6.col-md-3
+                %td.row_td
+                  .thumbnail.image
+                    = image_tag part.image.url(:medium)
+    %br
+    = button_to "Play Game", play_game_path(@game), method: :put, class: "button btn btn-primary btn-default"

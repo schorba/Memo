@@ -1,0 +1,19 @@
+development:
+  adapter: postgresql
+  database: memory_game_development
+  username: postgres
+  password: postgres
+  host: localhost
+
+test:
+  adapter: postgresql
+  database: memory_game_test
+  username: postgres
+  password: postgres
+  host: localhost
+
+production:
+  adapter: postgresql
+  database: memory_game_production
+  username: postgres
+  password: postgres

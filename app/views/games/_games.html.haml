@@ -1,0 +1,17 @@
+.container_image.container
+  %table
+    - @games.each_slice(4) do |row|
+      %tr
+        - row.each do |game|
+          .row
+            .col-sm-6.col-md-4
+              %td.row_td
+                .thumbnail.image
+                  =link_to game do
+                    = image_tag game.image.url(:medium), class: 'thumbnail'
+                  .caption
+                    %h4
+                      .game-title= game.title
+                  .btn= button_to 'Show', game, method: :get, role: "button",  class: ' btn btn-default'
+                  .btn= button_to "Play Game", play_game_path(game), method: :put, role: "button", class: 'btn btn-primary'
+

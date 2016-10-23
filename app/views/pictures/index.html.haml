@@ -1,0 +1,14 @@
+.container_image.container
+  %table
+    - @categories.each do |c|
+      %tr
+        %td
+          %h4= c.title
+          %hr
+      %tr
+        - c.pictures.each do |part|
+          .row
+            .col-xs-6.col-md-3
+              %td.row_td
+                .thumbnail.image
+                  = image_tag part.image.url(:thumb)

@@ -1,0 +1,20 @@
+.container_image.container
+  .new_game_container
+    = simple_form_for @game, url: games_path, html: {multipart: true} do |f|
+
+      = f.input :image, label: 'Cover Image', required: true
+      = f.label :Category, required: true
+      %br
+      = f.select :category_ids, options_for_select(Category.all.pluck(:title, :id)), {include_blank: false, required: true}, {multiple: true}
+      %br
+      %br
+      = f.input :title, required: true
+      = f.input :description
+
+      = simple_fields_for :part,  html: {multipart: true} do |ff|
+        .select3
+          = ff.input :quantity, collection: ['2 x 2','4 x 4','6 x 6'], label: 'Parts', required: true
+          .create_game_button
+            = f.submit "Create Game", class: "button btn btn-primary btn-lg ", id: 'create_button'
+
+

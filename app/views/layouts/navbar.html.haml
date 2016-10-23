@@ -1,0 +1,40 @@
+%nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = succeed "\u{a0}\u{a0}" do
+        = link_to 'Memory', games_path, class: 'navbar-brand'
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li.dropdown
+          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", href:  "#", role: "button"}
+            Games
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              = link_to 'All Games', games_path
+            %li.divider{role: "separator"}
+            %li
+              - if Game.any?
+                - Category.all.each do |category|
+                  =link_to category.to_label, games_path(category: category), remote: true
+        %li
+          = link_to 'New Game', new_game_path
+        %li
+          = link_to 'Pictures Gallery', pictures_path
+        %li
+          = link_to 'Add New Pictures', new_picture_path
+      .navbar-form.navbar-left
+        %form-group
+          = render 'games/search'
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          %li
+            = link_to 'Logout', destroy_user_session_path, method: :delete
+        - else
+          %li= link_to "Login", user_session_path
+          %li= link_to "Register", new_user_session_path
